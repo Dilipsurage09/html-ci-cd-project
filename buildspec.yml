@@ -10,7 +10,7 @@ phases:
       - echo "Zipping the current build..."
       - zip -r old_version.zip *          # Zip the current directory
       - echo "Uploading ZIP to S3..."
-      - aws s3 cp old_version.zip s3://my-html-backups/$(date +%Y%m%d%H%M%S)_old_version.zip
+      - aws s3 cp old_version.zip s3://s3-for-store-zip /$(date +%Y%m%d%H%M%S)_old_version.zip
   post_build:
     commands:
       - echo "Backup Completed."

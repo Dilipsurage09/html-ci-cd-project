@@ -1,9 +1,19 @@
 version: 0.2
+
 phases:
+  install:
+    commands:
+      - echo "Installing dependencies..."
+      - npm install
   build:
     commands:
-      - echo "Zipping the updated function..."
-      - zip -r function.zip index.js node_modules
+      - echo "Zipping the Lambda function..."
+      - zip -r function.zip . -x "node_modules/aws-sdk/*"   # Exclude aws-sdk for smaller size
+  post_build:
+    commands:
+      - echo "Updating Lambda function..."
+      - aws lambda update-function-code --function-name deploylambda --zip-file fileb://function.zip
+
 artifacts:
   files:
     - function.zip

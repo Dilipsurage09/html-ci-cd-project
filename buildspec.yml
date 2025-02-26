@@ -19,5 +19,4 @@ phases:
 
 artifacts:
   files:
-  -function.zip
-    
+    - function.zip

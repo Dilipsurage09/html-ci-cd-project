@@ -1,9 +1,9 @@
-version: 0.2
-phases:
-  build:
-    commands:
-      - echo "Zipping the updated function..."
-      - zip -r function.zip index.js node_modules
-artifacts:
-  files:
-    - function.zip
+version: 0.0
+Resources:
+  - myLambdaFunction:
+      Type: AWS::Lambda::Function
+      Properties:
+        Name: "deploylambda"
+        Alias: "your-lambda-alias"
+        CurrentVersion: "1"
+        TargetVersion: "2"

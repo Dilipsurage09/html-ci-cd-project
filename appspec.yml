@@ -12,3 +12,10 @@ hooks:
     - location: scripts/start_server.sh
       timeout: 300
       runas: root
+ Resources:
+  - LambdaFunction:
+      Type: AWS::Lambda::Function
+      Properties:
+        Name: <Lambda_Function_Name>
+        Alias: live
+        CurrentVersion: 1

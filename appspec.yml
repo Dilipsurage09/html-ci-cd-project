@@ -1,21 +1,9 @@
-version: 0.0
-os: linux
-files:
-  - source: /
-    destination: /var/www/html
-hooks:
-  AfterInstall:
-    - location: scripts/install_dependencies.sh
-      timeout: 300
-      runas: root
-  ApplicationStart:
-    - location: scripts/start_server.sh
-      timeout: 300
-      runas: root
- Resources:
-  - LambdaFunction:
-      Type: AWS::Lambda::Function
-      Properties:
-        Name: deploylambda
-        Alias: live
-        CurrentVersion: 1
+version: 0.2
+phases:
+  build:
+    commands:
+      - echo "Zipping the updated function..."
+      - zip -r function.zip index.js node_modules
+artifacts:
+  files:
+    - function.zip

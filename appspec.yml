@@ -16,6 +16,6 @@ hooks:
   - LambdaFunction:
       Type: AWS::Lambda::Function
       Properties:
-        Name: <Lambda_Function_Name>
+        Name: deploylambda
         Alias: live
         CurrentVersion: 1
